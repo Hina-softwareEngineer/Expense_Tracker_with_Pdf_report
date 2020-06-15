@@ -1,0 +1,34 @@
+
+
+.App{
+    background-color: #363535;
+    margin: 0;
+    padding:0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h4{
+    margin: 5px;
+    font-size: 1.5rem;
+}
+
+.App > h1{
+    padding: 20px;
+    font-size: 3.5rem;
+    color: white;
+    text-align: center;
+}
+
+.container{
+    margin: 0 auto;
+    border-radius: 25px;
+    padding: 50px;
+    color: white;
+    max-width: 900px;
+    background-color: #5a5a5a;
+}
+
+.box{
+    display: flex;
+    justify-content:center;
+}

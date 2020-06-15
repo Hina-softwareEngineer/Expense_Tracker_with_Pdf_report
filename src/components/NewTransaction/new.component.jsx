@@ -1,30 +1,53 @@
 import React from 'react';
+import Alert from '../Alert/alert.component';
+import './new.styles.css';
 
 class NewTransaction extends React.Component {
 
+    state = {
+        alertShown: false
+    }
 
     handleInput = (e) => {
-        this.setState({ [e.target.name]: e.target.value }, () => { });
+        this.setState({ [e.target.name]: e.target.value });
 
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
 
-        let object = {
-            [this.state.thing]: this.state.amount,
-        }
+        if ((this.state.thing === undefined || this.state.amount === undefined)
+            || (this.state.thing === "" || this.state.amount === "")) {
+            this.setState({ alertShown: true });
 
-        this.props.addNewThing(object);
+        }
+        else {
+
+            this.setState({ alertShown: false });
+
+
+            let object = {
+                name: this.state.thing,
+                amount: this.state.amount,
+            }
+
+            this.props.addNewThing(object);
+
+        }
     }
 
     render() {
+        let { alertShown } = this.state;
+
         return (
-            <div>
+            <div className="transaction">
+                {
+                    alertShown ? <Alert /> : null
+                }
                 <h1>Add new Transaction</h1>
 
                 <form onSubmit={this.handleSubmit}>
-                    <label>Thing :</label>
+                    <label>Thing </label>
                     <input onChange={this.handleInput}
                         type="text"
                         name="thing"
@@ -33,7 +56,7 @@ class NewTransaction extends React.Component {
                     />
 
                     <label>Amount</label>
-                    <p>(negative - expense, positive + income)</p>
+
                     <input onChange={this.handleInput}
                         type="number"
                         name="amount"
