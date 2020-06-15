@@ -1,9 +1,11 @@
 import React from 'react';
 
-class Balance extends React.Component {
 
-
-
-}
+const Balance = ({ balance }) => (
+    <div>
+        <h1>Balance</h1>
+        <h4>${balance}</h4>
+    </div>
+);
 
 export default Balance;

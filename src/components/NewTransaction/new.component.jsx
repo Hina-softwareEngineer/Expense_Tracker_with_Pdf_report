@@ -35,10 +35,10 @@ class NewTransaction extends React.Component {
                     <label>Amount</label>
                     <p>(negative - expense, positive + income)</p>
                     <input onChange={this.handleInput}
-                        type="text"
+                        type="number"
                         name="amount"
 
-                        placeholder="Enter amount"
+                        placeholder="Enter amount..."
                     />
 
                     <button>Add New Transaction</button>
