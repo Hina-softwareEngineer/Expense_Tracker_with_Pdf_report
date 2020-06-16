@@ -1,9 +1,9 @@
 import React from 'react';
-
+import './alert.style.css';
 
 const Alert = () => (
-    <div>
-        <h5>Please Fill the fields</h5>
+    <div className="alert">
+        <h5>Please Fill all the fields</h5>
     </div>
 );
 

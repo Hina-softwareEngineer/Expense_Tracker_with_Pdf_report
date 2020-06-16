@@ -6,10 +6,12 @@ const List = ({ name, amount }) => {
     let date = new Date();
 
     return (
-        <div className="list">
-            <p>{date.getDate()}/{date.getMonth() + 1}/{date.getFullYear()}</p>
+        <div className={`list ${
+            amount > 0 ? "red" : "green"
+            }`}>
+            <p>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</p>
             <p>{name}</p>
-            <p>{amount}</p>
+            <p>{amount}$</p>
         </div>
     )
 };

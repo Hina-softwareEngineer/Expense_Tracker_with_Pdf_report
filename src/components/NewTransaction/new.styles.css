@@ -1,29 +1,56 @@
 
 .transaction{
-
+    max-width: 700px;
+    margin: 50px auto;
 }
 
 .transaction > h1{
-    margin: 10px 0;
+    margin: 10px;
+    color: #004c8c;
+    background-color: lightblue;
+    padding: 10px;
+    border: 2px solid blue;
+    border-radius: 5px;
+}
+
+.transaction > h1 > span{
+    float: right;
+    cursor: pointer;
+}
+
+form{
+    padding: 10px ;
 }
 
 .transaction form label{
-    font-size: 24px;
+    font-size: 20px;
     margin: 15px 0;
+    color: #004c8c;
+    font-weight: bolder;
 }
 
 .transaction form input{
     display: block;
-    margin: 10px 0;
+    margin: 5px 0;
+    margin-bottom: 25px;
+    width: 100%;
     padding: 5px 10px;
     font-size: 24px;
     border-radius: 5px;
-    border : none;
+    background-color: #d0fcfc;
+    border : 2px solid #0277bd;
 }
 
+
 button{
-    font-size: 24px;
+    font-size: 20px;
     padding: 8px 15px;
     border-radius: 5px;
-    border: none;
+    color: #0277bd;
+    border: 2px solid #0277bd;
+}
+
+button:hover{
+    background-color: #0277bd;
+    color: white;
 }

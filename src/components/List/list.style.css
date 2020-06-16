@@ -1,0 +1,27 @@
+
+.list{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #eeeeee;
+    border-radius: 10px;
+}
+
+.list p{
+    margin: 10px 0;
+    font-size: 1.5rem;
+    width: 200px;
+    text-align: center;
+}
+
+.red {
+    border: 2px solid green;
+    background-color: rgb(163, 255, 163);
+    /* box-shadow: 2px 2px 4px #09b917, -2px -2px 4px #09b917; */
+}
+
+.green{
+    border: 2px solid red;
+    background-color: rgb(248, 167, 167);
+    /* box-shadow: 2px 2px 4px #ee0808, -2px -2px 4px #ee0808; */
+}

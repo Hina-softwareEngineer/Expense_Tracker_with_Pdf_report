@@ -10,8 +10,8 @@ class App extends React.Component {
 
   state = {
     thingsArray: [],
-    expense: 240,
-    income: 500,
+    expense: 0,
+    income: 0,
   }
 
   addNewThing = ({ name, amount }) => {
@@ -54,11 +54,13 @@ class App extends React.Component {
           <Balance balance={income - expense} />
 
           <div className="box">
-            <AmountBox text="Expense" amount={expense} />
             <AmountBox text="Income" amount={income} />
+            <AmountBox text="Expense" amount={expense} />
+
           </div>
           <NewTransaction addNewThing={this.addNewThing} />
 
+          <h1 className="transaction-heading">Transactions</h1>
           {
             thingsArray.map(({ name, amount }, index) => (
               <List key={index} name={name} amount={amount} />

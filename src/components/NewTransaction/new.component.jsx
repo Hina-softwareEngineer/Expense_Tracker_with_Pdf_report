@@ -5,7 +5,8 @@ import './new.styles.css';
 class NewTransaction extends React.Component {
 
     state = {
-        alertShown: false
+        alertShown: false,
+        toggle: true
     }
 
     handleInput = (e) => {
@@ -23,8 +24,12 @@ class NewTransaction extends React.Component {
         }
         else {
 
-            this.setState({ alertShown: false });
-
+            this.setState({
+                alertShown: false,
+                toggle: true,
+                thing: "",
+                amount: ""
+            });
 
             let object = {
                 name: this.state.thing,
@@ -37,36 +42,43 @@ class NewTransaction extends React.Component {
     }
 
     render() {
-        let { alertShown } = this.state;
+        let { alertShown, toggle } = this.state;
+
 
         return (
             <div className="transaction">
                 {
                     alertShown ? <Alert /> : null
                 }
-                <h1>Add new Transaction</h1>
+                <h1>Add New Transaction <span onClick={() => {
+                    this.setState({ toggle: !toggle })
+                }}>+</span></h1>
 
-                <form onSubmit={this.handleSubmit}>
-                    <label>Thing </label>
-                    <input onChange={this.handleInput}
-                        type="text"
-                        name="thing"
+                {
+                    toggle ? null : <form onSubmit={this.handleSubmit}>
+                        <label>Thing </label>
+                        <input onChange={this.handleInput}
+                            type="text"
+                            name="thing"
+                            value={this.state.thing}
+                            placeholder="Enter thing..."
+                        />
 
-                        placeholder="Enter thing..."
-                    />
+                        <label>Amount (Negative = expense, positive = income) </label>
 
-                    <label>Amount</label>
+                        <input onChange={this.handleInput}
+                            type="number"
+                            name="amount"
+                            value={this.state.amount}
+                            placeholder="Enter amount..."
+                        />
 
-                    <input onChange={this.handleInput}
-                        type="number"
-                        name="amount"
+                        <button>Add New Transaction</button>
 
-                        placeholder="Enter amount..."
-                    />
+                    </form>
+                }
 
-                    <button>Add New Transaction</button>
 
-                </form>
             </div>
         );
     }
