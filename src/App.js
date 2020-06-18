@@ -1,10 +1,13 @@
 import React from 'react';
+import Logo from './Images/icon1.png';
 import './App.css';
+
 import NewTransaction from './components/NewTransaction/new.component';
 import Balance from './components/Balance/balance.component';
 import AmountBox from './components/amountBox/amount.component';
 import List from './components/List/list.component';
 
+fb391d27332c0656dcd67c4ab9ddcc5d
 
 class App extends React.Component {
 
@@ -48,7 +51,7 @@ class App extends React.Component {
 
       <div className="App">
 
-        <h1>Expense Tracker</h1>
+        <h1><img src={Logo} alt="Expense-Tracker" /> Expense Tracker</h1>
 
         <div className="container">
           <Balance balance={income - expense} />
