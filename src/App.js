@@ -7,7 +7,7 @@ import Balance from './components/Balance/balance.component';
 import AmountBox from './components/amountBox/amount.component';
 import List from './components/List/list.component';
 
-fb391d27332c0656dcd67c4ab9ddcc5d
+
 
 class App extends React.Component {
 
