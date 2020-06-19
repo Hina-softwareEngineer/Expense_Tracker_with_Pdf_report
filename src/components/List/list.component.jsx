@@ -1,9 +1,7 @@
 import React from 'react';
 import './list.style.css';
 
-const List = ({ name, amount }) => {
-
-    let date = new Date();
+const List = ({ name, amount, date }) => {
 
     return (
         <div className={`list ${

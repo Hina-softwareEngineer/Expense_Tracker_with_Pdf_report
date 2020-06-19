@@ -7,12 +7,15 @@ import Balance from './components/Balance/balance.component';
 import AmountBox from './components/amountBox/amount.component';
 import List from './components/List/list.component';
 
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PdfDocument } from "./components/PdfDocument/pdfDocument";
+
 
 
 class App extends React.Component {
 
   state = {
-    thingsArray: [],
+    thingsArray: [{ name: "Cookie", amount: 450, date: new Date() }],
     expense: 0,
     income: 0,
   }
@@ -21,7 +24,7 @@ class App extends React.Component {
     let { thingsArray } = this.state;
 
     this.setState({
-      thingsArray: [...thingsArray, { name, amount }],
+      thingsArray: [...thingsArray, { name, amount, date: new Date() }],
     });
 
     if (amount >= 0) {
@@ -65,10 +68,31 @@ class App extends React.Component {
 
           <h1 className="transaction-heading">Transactions</h1>
           {
-            thingsArray.map(({ name, amount }, index) => (
-              <List key={index} name={name} amount={amount} />
+            thingsArray.map(({ name, amount, date }, index) => (
+              <List key={index} name={name} amount={amount} date={date} />
             ))
           }
+
+
+          <PDFViewer>
+            <PdfDocument data={thingsArray} income={income} expense={expense} />
+          </PDFViewer>
+
+          {thingsArray && <PDFDownloadLink
+            document={<PdfDocument data={thingsArray} />}
+            fileName="TransactionsReport.pdf"
+            style={{
+              textDecoration: "none",
+              padding: "10px",
+              color: "#4a4a4a",
+              backgroundColor: "#f2f2f2",
+              border: "1px solid #4a4a4a"
+            }}
+          >
+            {({ blob, url, loading, error }) =>
+              loading ? "Loading document..." : "Download Pdf"
+            }
+          </PDFDownloadLink>}
         </div>
       </div>
     );
