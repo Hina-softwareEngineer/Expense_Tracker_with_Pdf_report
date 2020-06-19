@@ -46,6 +46,9 @@ class App extends React.Component {
 
   }
 
+  delete1() {
+    console.log("delte");
+  }
 
   render() {
     let { expense, income, thingsArray } = this.state;
@@ -69,7 +72,7 @@ class App extends React.Component {
           <h1 className="transaction-heading">Transactions</h1>
           {
             thingsArray.map(({ name, amount, date }, index) => (
-              <List key={index} name={name} amount={amount} date={date} />
+              <List key={index} name={name} amount={amount} date={date} delete1={this.delete1} />
             ))
           }
 
