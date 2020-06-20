@@ -89,7 +89,9 @@ class App extends React.Component {
 
       <div className="App">
 
-        <h1><img src={Logo} alt="Expense-Tracker" /> Expense Tracker</h1>
+        Is it deployed?
+
+        {/* <h1><img src={Logo} alt="Expense-Tracker" /> Expense Tracker</h1>
 
         <div className="container">
           <Balance balance={income - expense} />
@@ -129,7 +131,7 @@ class App extends React.Component {
           {
             thingsArray.length <= 0 ? <p>Try to add Transactions to generate report</p> : null
           }
-        </div>
+        </div> */}
       </div>
     );
   }
