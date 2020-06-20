@@ -94,3 +94,29 @@ h4{
         width: unset !important;
     }
 }
+
+a{
+    padding: unset !important;
+    color: unset !important;
+    background-color: unset !important;
+    border: none !important;
+}
+
+.pdf{
+    background-color: white;
+    color: red;
+    font-size: 22px;
+    padding: 10px 15px;
+    border: 1px solid red;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.icon-pdf{
+    font-size: 24px;
+}
+
+.disabled{
+    cursor: not-allowed;
+    pointer-events: none;
+}

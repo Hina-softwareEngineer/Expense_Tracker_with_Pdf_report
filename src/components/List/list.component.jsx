@@ -5,12 +5,12 @@ const List = ({ name, amount, delete1, date, }) => {
 
     return (
         <div className={`list ${
-            amount > 0 ? "red" : "green"
+            amount > 0 ? "green" : "red"
             }`}>
             <p>{date.getDate()}-{date.getMonth() + 1}-{date.getFullYear()}</p>
             <p>{name}</p>
             <p>{amount}$</p>
-            <p onClick={delete1}>X</p>
+            <p className="red-cross" onClick={() => delete1(name, amount)}>X</p>
         </div>
     )
 };

@@ -18,8 +18,22 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 32,
-        fontWeight: 'bold',
+        fontWeight: '700',
         textAlign: 'center',
+    },
+
+    exp: {
+        color: "#dd2c00",
+        fontSize: 22,
+    },
+    income: {
+        marginTop: 10,
+        fontSize: 22,
+        color: "#005005",
+    },
+    balance: {
+        fontSize: 22,
+        color: "#002f6c",
     },
     transaction: {
         margin: 20,
@@ -31,7 +45,7 @@ const styles = StyleSheet.create({
     date: {
         marginLeft: 18,
         fontSize: 14,
-        padding: 1,
+        marginTop: 1,
         paddingLeft: 5,
         paddingBottom: 3,
         color: "gray",
@@ -39,6 +53,8 @@ const styles = StyleSheet.create({
     amount: {
         marginLeft: 20,
         padding: 2,
+        fontSize: 16,
+        color: "#000a12"
     },
     header: {
         fontSize: 12,
@@ -51,18 +67,18 @@ const styles = StyleSheet.create({
 });
 
 export function PdfDocument(props) {
-    console.log("pdf props", props.data);
+
     return (
         <Document>
             <Page style={styles.page}>
                 <Text style={styles.header} fixed>
-                    ~ Created from Expense Tracker ~
+                    ~ Generated from Expense Tracker ~
       </Text>
                 <View >
                     <Text style={styles.title}>Transactions Report</Text>
-                    <Text>Income : ${props.income}</Text>
-                    <Text>Expense : ${props.expense}</Text>
-                    <Text>Balance : ${props.income - props.expense}</Text>
+                    <Text style={styles.income}>Income : ${props.income}</Text>
+                    <Text style={styles.exp}>Expense : ${props.expense}</Text>
+                    <Text style={styles.balance}>Balance : ${props.income - props.expense}</Text>
                     {props.data
                         ? props.data.map((transaction, index) => {
                             return (

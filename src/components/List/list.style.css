@@ -14,14 +14,25 @@
     text-align: center;
 }
 
-.red {
+.green {
     border: 2px solid green;
     background-color: rgb(163, 255, 163);
     /* box-shadow: 2px 2px 4px #09b917, -2px -2px 4px #09b917; */
 }
 
-.green{
+.red{
     border: 2px solid red;
     background-color: rgb(248, 167, 167);
     /* box-shadow: 2px 2px 4px #ee0808, -2px -2px 4px #ee0808; */
+}
+
+.red-cross{
+    color: #fc5f5f;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.red-cross:hover{
+    color : red;
+    transform: scale(1.2);
 }

@@ -10,15 +10,21 @@ import List from './components/List/list.component';
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import { PdfDocument } from "./components/PdfDocument/pdfDocument";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
+
+library.add(faFilePdf);
 
 class App extends React.Component {
 
   state = {
-    thingsArray: [{ name: "Cookie", amount: 450, date: new Date() }],
+    thingsArray: [],
     expense: 0,
     income: 0,
   }
+
 
   addNewThing = ({ name, amount }) => {
     let { thingsArray } = this.state;
@@ -46,8 +52,34 @@ class App extends React.Component {
 
   }
 
-  delete1() {
-    console.log("delte");
+  delete1 = (thingname, amount) => {
+
+    let { thingsArray } = this.state;
+
+    let newthingsArray = thingsArray.filter(({ name }) => (
+      name !== thingname
+    ));
+
+    this.setState({
+      thingsArray: newthingsArray,
+    });
+
+    if (amount >= 0) {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          income: prevState.income - +amount
+        }
+      })
+    }
+    else {
+      this.setState(prevState => {
+        return {
+          ...prevState,
+          expense: prevState.expense - (+amount * -1)
+        }
+      })
+    }
   }
 
   render() {
@@ -77,12 +109,8 @@ class App extends React.Component {
           }
 
 
-          <PDFViewer>
-            <PdfDocument data={thingsArray} income={income} expense={expense} />
-          </PDFViewer>
-
-          {thingsArray && <PDFDownloadLink
-            document={<PdfDocument data={thingsArray} />}
+          {thingsArray.length > 0 && <PDFDownloadLink
+            document={<PdfDocument data={thingsArray} income={income} expense={expense} />}
             fileName="TransactionsReport.pdf"
             style={{
               textDecoration: "none",
@@ -92,10 +120,15 @@ class App extends React.Component {
               border: "1px solid #4a4a4a"
             }}
           >
-            {({ blob, url, loading, error }) =>
-              loading ? "Loading document..." : "Download Pdf"
+            {({ loading }) =>
+              loading ? "Loading document..." : <p className="pdf">
+                <FontAwesomeIcon icon='file-pdf' className="icon-pdf" color="red" /> Generate Report</p>
             }
+
           </PDFDownloadLink>}
+          {
+            thingsArray.length <= 0 ? <p>Try to add Transactions to generate report</p> : null
+          }
         </div>
       </div>
     );
