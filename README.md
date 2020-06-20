@@ -2,7 +2,7 @@
 ## ⚡️ Expense Tracker in React ⚛️ with Report generation 🖊🖊 of Transactions  📑🗒
 
 
-⚡️ Demo Link : http://expense-tracker-reactJs-001.surge.sh/
+⚡️ Demo Link : http://expense-tracker-2002.surge.sh/
  
 ![Image1](./images/expense1.png)
 
