@@ -7,7 +7,7 @@ import Balance from './components/Balance/balance.component';
 import AmountBox from './components/amountBox/amount.component';
 import List from './components/List/list.component';
 
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { PdfDocument } from "./components/PdfDocument/pdfDocument";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
