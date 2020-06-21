@@ -6,17 +6,22 @@
 
 .transaction > h1{
     margin: 10px;
-    color: #004c8c;
-    background-color: lightblue;
+    background-color: #004c8c;
+    border: 2px solid #004c8c;
+    color: white;
+    font-size: 24px;
     padding: 10px;
-    border: 2px solid blue;
     border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
 }
 
-.transaction > h1 > span{
-    float: right;
-    cursor: pointer;
+
+.transaction > h1:hover{
+    color: #004c8c;
+    background-color: lightblue;
 }
+
 
 form{
     padding: 10px ;
@@ -29,7 +34,7 @@ form{
     font-weight: bolder;
 }
 
-.transaction form input{
+.transaction> form> input{
     display: block;
     margin: 5px 0;
     margin-bottom: 25px;
@@ -53,4 +58,12 @@ button{
 button:hover{
     background-color: #0277bd;
     color: white;
+}
+
+input[type="radio"]{
+    display: inline;
+}
+
+label{
+    display: block;
 }

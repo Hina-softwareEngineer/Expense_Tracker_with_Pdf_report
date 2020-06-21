@@ -6,13 +6,16 @@ class NewTransaction extends React.Component {
 
     state = {
         alertShown: false,
-        toggle: true
+        toggle: true,
+        transaction: "Income",
     }
 
     handleInput = (e) => {
+        console.log(e.target.name, e.target.value)
         this.setState({ [e.target.name]: e.target.value });
 
     }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -24,16 +27,22 @@ class NewTransaction extends React.Component {
         }
         else {
 
+            let amount = this.state.amount;
             this.setState({
                 alertShown: false,
                 toggle: true,
                 thing: "",
-                amount: ""
+                amount: "",
+                transaction: "Income"
             });
+
+            if (this.state.transaction === "Expense") {
+                amount = amount * -1;
+            }
 
             let object = {
                 name: this.state.thing,
-                amount: this.state.amount,
+                amount: amount,
             }
 
             this.props.addNewThing(object);
@@ -50,12 +59,33 @@ class NewTransaction extends React.Component {
                 {
                     alertShown ? <Alert /> : null
                 }
-                <h1>Add New Transaction <span onClick={() => {
+                <h1 onClick={() => {
                     this.setState({ toggle: !toggle })
-                }}>+</span></h1>
+                }}>Add New Transaction </h1>
 
                 {
                     toggle ? null : <form onSubmit={this.handleSubmit}>
+
+
+                        <div className="radioButton">
+                            <label>
+                                <input onChange={this.handleInput}
+                                    type="radio"
+                                    name="transaction"
+                                    value="Income"
+                                    checked={this.state.transaction === "Income"}
+                                /> Income
+                        </label>
+
+                            <label>
+                                <input onChange={this.handleInput}
+                                    type="radio"
+                                    name="transaction"
+                                    checked={this.state.transaction === "Expense"}
+                                    value="Expense"
+                                /> Expense</label>
+                        </div>
+
                         <label>Thing </label>
                         <input onChange={this.handleInput}
                             type="text"
@@ -64,7 +94,7 @@ class NewTransaction extends React.Component {
                             placeholder="Enter thing..."
                         />
 
-                        <label>Amount (Negative = expense, positive = income) </label>
+                        <label>Amount</label>
 
                         <input onChange={this.handleInput}
                             type="number"

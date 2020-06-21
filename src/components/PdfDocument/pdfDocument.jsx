@@ -85,7 +85,9 @@ export function PdfDocument(props) {
                                 <View key={index} style={styles.transaction}>
                                     <Text style={styles.trans}>{index + 1}. Transaction Name : {transaction.name}</Text>
                                     <Text style={styles.date} s>Date : {transaction.date.getDate()}-{transaction.date.getMonth() + 1}-{transaction.date.getFullYear()}</Text>
-                                    <Text style={styles.amount}>Amount : {transaction.amount}$</Text>
+                                    <Text style={styles.amount}>{transaction.amount > 0 ?
+                                        `Income : $${transaction.amount} ` :
+                                        `Expense : $${transaction.amount * -1}`}</Text>
                                 </View>
                             );
                         })
